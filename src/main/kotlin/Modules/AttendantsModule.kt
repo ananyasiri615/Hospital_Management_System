@@ -18,16 +18,16 @@ class AttendantsModule {
             println("Your appointment is fixed with Dr. John (Dermatologist)")
         }
         if (bodypart == "lungs"){
-            println("Your appointment is fixed with Dr. John (Oncologist)")
+            println("Your appointment is fixed with Dr. Sharan (Oncologist)")
         }
         if (bodypart == "heart"){
-            println("Your appointment is fixed with Dr. John (Cardiologist)")
+            println("Your appointment is fixed with Dr. Dhruv (Cardiologist)")
         }
         if (bodypart == "ENT"){
-            println("Your appointment is fixed with Dr. John (Dermatologist)")
+            println("Your appointment is fixed with Dr. Divya (Dermatologist)")
         }
         if (bodypart == "X-ray"){
-            println("Your appointment is fixed with Dr. John (Radiologist)")
+            println("Your appointment is fixed with Dr. Shilpa (Radiologist)")
         }
 
     }

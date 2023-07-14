@@ -1,5 +1,14 @@
 package Modules
 
+data class Doctor(
+    var doc_id: Int,
+    var doc_name: String,
+    var age: Int,
+    var gender: String,
+    var department: String,
+    var hours: Int,
+    var break_needed: Int
+)
 fun main(args: Array<String>) {
     println("Hello, Sir/Madam!")
     println()

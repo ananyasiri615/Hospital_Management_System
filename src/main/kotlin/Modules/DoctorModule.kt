@@ -14,10 +14,10 @@ class DoctorModule {
         var total_slots_possible: Int = hrsTomins / 15
 
         println("How many hours break you will need? : ")
-        var lunchbreak = sc.nextInt()
+        var break_needed = sc.nextInt()
 
         if (hrsTomins > 120) {
-            total_slots_possible = (hours - lunchbreak)/4
+            total_slots_possible = (hours - break_needed)/4
             println("Appointments to be taken by you are: $total_slots_possible")
             println("You can take break of 30 minutes")
         }

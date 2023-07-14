@@ -18,8 +18,8 @@ object Insert {
             var rs: ResultSet? = null
 
             stmt = con!!.createStatement()
-
-            var query: String = "INSERT INTO doctor(doc_id ,doc_name ,age ,gender ,department ,hours ,break) VALUES()"
+            var query: String = "INSERT INTO doctor(doc_id ,doc_name ,age ,gender ,department) VALUES(?, ?, ?, ?, ?, ?, ?)"
+            Statement.RETURN_GENERATED_KEYS
 
             val rows = stmt!!.executeUpdate(query)
 

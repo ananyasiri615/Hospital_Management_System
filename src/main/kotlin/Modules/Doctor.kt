@@ -1,5 +1,0 @@
-package Modules
-
-class Doctor {
-
-}

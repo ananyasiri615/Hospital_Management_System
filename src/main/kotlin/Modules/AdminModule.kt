@@ -7,10 +7,10 @@ class AdminModule {
         var sc = Scanner(System.`in`)
 
         println("Doctor Details: Enter Id: ")
-        var id: Int = sc.nextInt()
+        var doc_id: Int = sc.nextInt()
 
         println("Doctor Details: Enter name: ")
-        var name: String = sc.next()
+        var doc_name: String = sc.next()
 
         println("Doctor Details: Enter age: ")
         var age: Int = sc.nextInt()
