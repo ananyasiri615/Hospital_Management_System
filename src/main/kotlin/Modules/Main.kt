@@ -1,14 +1,7 @@
 package Modules
 
-data class Doctor(
-    var doc_id: Int,
-    var doc_name: String,
-    var age: Int,
-    var gender: String,
-    var department: String,
-    var hours: Int,
-    var break_needed: Int
-)
+import java.util.*
+
 fun main(args: Array<String>) {
     println("Hello, Sir/Madam!")
     println()
@@ -21,24 +14,27 @@ fun confirmDes() {
     println("3. Attendant")
     print("Please enter your designation: ")
 
-    val input = readlnOrNull()
+    val scanner = Scanner(System.`in`)
+    val input = scanner.nextLine()
 
     when (input?.toIntOrNull()) {
         1 -> {
             println("Hello, doctor!")
-            var docvar = DoctorModule()
+            val docvar = DoctorModule()
             docvar.doctor()
         }
         2 -> {
             println("Hello, admin!")
-            var adminvar = AdminModule()
-            adminvar.admin()
+            val adminvar = AdminModule()
+            adminvar.getAdminDetails()
         }
         3 -> {
             println("Hello, attendant!")
-            var attendantvar = AttendantsModule()
+            val attendantvar = AttendantsModule()
             attendantvar.attendant()
         }
         else -> println("Invalid designation")
     }
+
+    scanner.close()
 }

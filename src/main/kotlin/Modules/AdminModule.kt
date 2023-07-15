@@ -2,23 +2,47 @@ package Modules
 
 import java.util.*
 
+data class doctor(
+    var doc_id: Int,
+    var doc_name: String,
+    var age: Int,
+    var gender: String,
+    var department: String
+)
+
 class AdminModule {
-    fun admin() {
-        var sc = Scanner(System.`in`)
+    private var sc: Scanner? = null
+
+    fun getScanner(): Scanner {
+        sc = Scanner(System.`in`)
+        return sc!!
+    }
+
+    fun closeScanner() {
+        sc?.close()
+    }
+
+    fun getAdminDetails(): doctor {
+        val scanner = getScanner()
 
         println("Doctor Details: Enter Id: ")
-        var doc_id: Int = sc.nextInt()
+        val doc_id: Int = scanner.nextInt()
 
         println("Doctor Details: Enter name: ")
-        var doc_name: String = sc.next()
+        val doc_name: String = scanner.next()
+        scanner.nextLine()
 
         println("Doctor Details: Enter age: ")
-        var age: Int = sc.nextInt()
+        val age: Int = scanner.nextInt()
 
         println("Doctor Details: Enter gender: ")
-        var gender: String = sc.next()
+        val gender: String = scanner.next()
 
         println("Doctor Details: Enter Department: ")
-        var department: String = sc.next()
+        val department: String = scanner.next()
+
+        closeScanner()
+
+        return doctor(doc_id, doc_name, age, gender, department)
     }
 }

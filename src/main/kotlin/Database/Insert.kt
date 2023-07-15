@@ -1,46 +1,63 @@
 package Database
 
+import Modules.AdminModule
 import java.sql.*
 
 object Insert {
-    var con : Connection ? = null
+    var con: Connection? = null
     var username = "root"
     var password = "ananya10"
 
-    @JvmStatic
-    fun main(args: Array<String>) {
+    fun insertDoctorDetails(doc_id: Int, doc_name: String, age: Int, gender: String, department: String) {
         getConnection()
-        executeQuery()
+        executeQuery(doc_id, doc_name, age, gender, department)
     }
-    fun executeQuery(){
+
+    private fun executeQuery(doc_id: Int, doc_name: String, age: Int, gender: String, department: String) {
         try {
             var stmt: Statement? = null
-            var rs: ResultSet? = null
 
             stmt = con!!.createStatement()
-            var query: String = "INSERT INTO doctor(doc_id ,doc_name ,age ,gender ,department) VALUES(?, ?, ?, ?, ?, ?, ?)"
-            Statement.RETURN_GENERATED_KEYS
+            val query = "INSERT INTO doctor(doc_id, doc_name, age, gender, department) VALUES (?, ?, ?, ?, ?)"
+            val preparedStmt = con!!.prepareStatement(query)
+            preparedStmt.setInt(1, doc_id)
+            preparedStmt.setString(2, doc_name)
+            preparedStmt.setInt(3, age)
+            preparedStmt.setString(4, gender)
+            preparedStmt.setString(5, department)
 
-            val rows = stmt!!.executeUpdate(query)
+            val rows = preparedStmt.executeUpdate()
 
-            println("Insertion Successful $rows")
+            println("Insertion Successful: $rows")
 
-        }catch (ex: Exception){
+            preparedStmt.close()
+        } catch (ex: Exception) {
             ex.printStackTrace()
         }
     }
-    fun getConnection(){
+
+    private fun getConnection() {
         try {
             // Load the driver class
             Class.forName("com.mysql.cj.jdbc.Driver")
             // Obtaining the connection object
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/case_study", username, password)
-        }catch (ex: Exception){
-            println("Exception occured. Handled")
+        } catch (ex: Exception) {
+            println("Exception occurred. Handled")
             ex.printStackTrace()
         }
-
     }
-
 }
 
+fun main(args: Array<String>) {
+    val adminModule = AdminModule()
+    val adminDetails = adminModule.getAdminDetails()
+
+    Insert.insertDoctorDetails(
+        adminDetails.doc_id,
+        adminDetails.doc_name,
+        adminDetails.age,
+        adminDetails.gender,
+        adminDetails.department
+    )
+}
