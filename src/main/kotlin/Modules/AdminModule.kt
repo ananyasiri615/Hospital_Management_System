@@ -1,5 +1,6 @@
 package Modules
 
+import Database.Insert
 import java.util.*
 
 data class doctor(
@@ -11,38 +12,30 @@ data class doctor(
 )
 
 class AdminModule {
-    private var sc: Scanner? = null
+    private val scanner = Scanner(System.`in`)
 
-    fun getScanner(): Scanner {
-        sc = Scanner(System.`in`)
-        return sc!!
-    }
-
-    fun closeScanner() {
-        sc?.close()
-    }
-
-    fun getAdminDetails(): doctor {
-        val scanner = getScanner()
-
-        println("Doctor Details: Enter Id: ")
-        val doc_id: Int = scanner.nextInt()
-
-        println("Doctor Details: Enter name: ")
-        val doc_name: String = scanner.next()
+    fun getAdminDetails() {
+        println("Enter the doctor's details")
+        println("Enter Doctor ID: ")
+        val doc_id = scanner.nextInt()
         scanner.nextLine()
 
-        println("Doctor Details: Enter age: ")
-        val age: Int = scanner.nextInt()
+        println("Enter Doctor name: ")
+        val doc_name = scanner.nextLine()
 
-        println("Doctor Details: Enter gender: ")
-        val gender: String = scanner.next()
+        print("Enter Doctor Age: ")
+        val age = scanner.nextInt()
+        scanner.nextLine()
 
-        println("Doctor Details: Enter Department: ")
-        val department: String = scanner.next()
+        print("Enter Doctor Gender: ")
+        val gender = scanner.nextLine()
 
-        closeScanner()
+        print("Enter Doctor Department: ")
+        val department = scanner.nextLine()
 
-        return doctor(doc_id, doc_name, age, gender, department)
+        print("Doctor details Added successfully")
+
+        val connectivity = Insert()
+        connectivity.insertDoctorDetails(doc_id, doc_name, age, gender, department)
     }
 }

@@ -26,15 +26,15 @@ object Select {
                 rs = stmt.resultSet
             }
             while (rs!!.next()) {
-                println("Doctor ID"+rs.getInt("doc_id"))
-                println("Doctor Name"+rs.getString("doc_name"))
-                println("Age"+rs.getInt("age"))
-                println("Gender"+rs.getString("gender"))
-                println("Department"+rs.getString("department"))
-                println("No. of Hours"+rs.getInt("hours"))
-                println("Break needed"+rs.getInt("break"))
-                println("Total Slots"+rs.getInt("total_slots"))
-                println("Available Slots"+rs.getInt("avail_slots"))
+                println("Doctor ID: "+rs.getInt("doc_id"))
+                println("Doctor Name: "+rs.getString("doc_name"))
+                println("Age: "+rs.getInt("age"))
+                println("Gender: "+rs.getString("gender"))
+                println("Department: "+rs.getString("department"))
+                println("No. of Hours: "+rs.getInt("hours"))
+                println("Break needed: "+rs.getInt("break_needed"))
+                println("Total Slots: "+rs.getInt("total_slots"))
+                println("Available Slots: "+rs.getInt("avail_slots"))
 
             }
         }catch (ex: Exception){

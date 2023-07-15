@@ -1,47 +1,44 @@
 package Database
 
-import java.sql.*
+import java.sql.Connection
+import java.sql.DriverManager
 
-object Update {
-    var con : Connection ? = null
-    var username = "root"
-    var password = "ananya10"
+class Update {
+    private var con: Connection? = null
+    private val username = "root"
+    private val password = "ananya10"
 
-    @JvmStatic
-    fun main(args: Array<String>) {
+    init {
         getConnection()
-        executeQuery()
     }
-    fun executeQuery(){
-        try {
-            var stmt: Statement? = null
-            var rs: ResultSet? = null
 
-            stmt = con!!.createStatement()
-            // Read Operation
-//            var query: String = "select * from doctor"
-
-            // INSERT OPERATION
-//            ***************
-            var query: String = "update manager set name = 'Latashree' where manager_id=1003"
-            val rows = stmt!!.executeUpdate(query)
-            println("Update Successful $rows")
-        }catch (ex: Exception){
-            ex.printStackTrace()
-        }
-    }
-    fun getConnection(){
+    private fun getConnection() {
         try {
-            // Load the driver class
             Class.forName("com.mysql.cj.jdbc.Driver")
-            // Obtaining the connection object
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/case_study", username, password)
-        }catch (ex: Exception){
-            println("Exception occured. Handled")
+        } catch (ex: Exception) {
+            println("Exception occurred. Handled")
             ex.printStackTrace()
         }
-
     }
 
-}
+    fun updateDoctorDetails(doc_id: Int, hours: Int, break_needed: Int, total_slots:Int, avail_slots: Int ) {
+        // Prepare the SQL statement to insert the data into the Doctors table
+        val statement = con?.prepareStatement("UPDATE doctor SET hours = ? ,break_needed = ?, total_slots = ?,avail_slots = ? WHERE doc_id = ?';")
 
+        // Set the values for the prepared statement
+        statement?.setInt(1, doc_id)
+        statement?.setInt(2, hours)
+        statement?.setInt(3, break_needed)
+        statement?.setInt(4, total_slots)
+        statement?.setInt(5, avail_slots)
+
+
+        // Execute the insert statement
+        statement?.executeUpdate()
+
+        // Close the database connection and resources
+        statement?.close()
+        con?.close()
+    }
+}

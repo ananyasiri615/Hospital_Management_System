@@ -14,23 +14,23 @@ fun confirmDes() {
     println("3. Attendant")
     print("Please enter your designation: ")
 
-    val scanner = Scanner(System.`in`)
-    val input = scanner.nextLine()
+    var scanner = Scanner(System.`in`)
+    var input = scanner.nextLine()
 
     when (input?.toIntOrNull()) {
         1 -> {
             println("Hello, doctor!")
-            val docvar = DoctorModule()
+            var docvar = DoctorModule()
             docvar.doctor()
         }
         2 -> {
             println("Hello, admin!")
-            val adminvar = AdminModule()
+            var adminvar = AdminModule()
             adminvar.getAdminDetails()
         }
         3 -> {
             println("Hello, attendant!")
-            val attendantvar = AttendantsModule()
+            var attendantvar = AttendantsModule()
             attendantvar.attendant()
         }
         else -> println("Invalid designation")
