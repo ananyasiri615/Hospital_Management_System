@@ -21,15 +21,14 @@ class Update {
         }
     }
 
-    fun updateDoctorDetails(doc_id: Int, hours: Double, break_needed: Double, total_slots: Int ) {
+    fun updateDoctorDetails(doc_id: Int, hours: Double, total_slots: Int ) {
         // Prepare the SQL statement to insert the data into the Doctors table
-        val statement = con?.prepareStatement("UPDATE doctor SET hours = ? ,break_needed = ?, total_slots = ? WHERE doc_id = ?")
+        val statement = con?.prepareStatement("UPDATE doctor SET hours = ? , total_slots = ? WHERE doc_id = ?")
 
         // Set the values for the prepared statement
         statement?.setDouble(1, hours)
-        statement?.setDouble(2, break_needed)
-        statement?.setInt(3, total_slots)
-        statement?.setInt(4, doc_id)
+        statement?.setInt(2, total_slots)
+        statement?.setInt(3, doc_id)
 
 
         // Execute the update statement

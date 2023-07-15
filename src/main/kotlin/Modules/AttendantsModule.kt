@@ -18,7 +18,7 @@ class AttendantsModule {
             println("Your appointment is fixed with Dr. John (Dermatologist)")
         }
         if (bodypart == "lungs"){
-            println("Your appointment is fixed with Dr. Sharan (Oncologist)")
+            println("Your appointment is fixed with Dr. Sharpe (Oncologist)")
         }
         if (bodypart == "heart"){
             println("Your appointment is fixed with Dr. Dhruv (Cardiologist)")

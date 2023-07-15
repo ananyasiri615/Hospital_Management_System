@@ -8,8 +8,8 @@ data class doctor(
     var gender: String,
     var department: String,
     var hours: Double,
-    var break_needed: Double,
-    var total_slots: Int
+    var total_slots: Int,
+    var avail_slots: Int
 )
 
 fun main(args: Array<String>) {

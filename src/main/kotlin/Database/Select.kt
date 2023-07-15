@@ -32,7 +32,6 @@ object Select {
                 println("Gender: "+rs.getString("gender"))
                 println("Department: "+rs.getString("department"))
                 println("No. of Hours: "+rs.getInt("hours"))
-                println("Break needed: "+rs.getInt("break_needed"))
                 println("Total Slots: "+rs.getInt("total_slots"))
                 println("Available Slots: "+rs.getInt("avail_slots"))
 
