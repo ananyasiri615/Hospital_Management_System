@@ -1,6 +1,16 @@
 package Modules
 
 import java.util.*
+data class doctor(
+    var doc_id: Int,
+    var doc_name: String,
+    var age: Int,
+    var gender: String,
+    var department: String,
+    var hours: Double,
+    var break_needed: Double,
+    var total_slots: Int
+)
 
 fun main(args: Array<String>) {
     println("Hello, Sir/Madam!")
@@ -21,7 +31,7 @@ fun confirmDes() {
         1 -> {
             println("Hello, doctor!")
             var docvar = DoctorModule()
-            docvar.doctor()
+            docvar.getdoctorDetails()
         }
         2 -> {
             println("Hello, admin!")

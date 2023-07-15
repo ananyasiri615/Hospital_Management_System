@@ -1,7 +1,6 @@
 package Database
 
-import java.sql.Connection
-import java.sql.DriverManager
+import java.sql.*
 
 class Update {
     private var con: Connection? = null
@@ -22,19 +21,18 @@ class Update {
         }
     }
 
-    fun updateDoctorDetails(doc_id: Int, hours: Int, break_needed: Int, total_slots:Int, avail_slots: Int ) {
+    fun updateDoctorDetails(doc_id: Int, hours: Double, break_needed: Double, total_slots: Int ) {
         // Prepare the SQL statement to insert the data into the Doctors table
-        val statement = con?.prepareStatement("UPDATE doctor SET hours = ? ,break_needed = ?, total_slots = ?,avail_slots = ? WHERE doc_id = ?';")
+        val statement = con?.prepareStatement("UPDATE doctor SET hours = ? ,break_needed = ?, total_slots = ? WHERE doc_id = ?")
 
         // Set the values for the prepared statement
-        statement?.setInt(1, doc_id)
-        statement?.setInt(2, hours)
-        statement?.setInt(3, break_needed)
-        statement?.setInt(4, total_slots)
-        statement?.setInt(5, avail_slots)
+        statement?.setDouble(1, hours)
+        statement?.setDouble(2, break_needed)
+        statement?.setInt(3, total_slots)
+        statement?.setInt(4, doc_id)
 
 
-        // Execute the insert statement
+        // Execute the update statement
         statement?.executeUpdate()
 
         // Close the database connection and resources
