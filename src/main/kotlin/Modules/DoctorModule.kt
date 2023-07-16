@@ -4,9 +4,9 @@ import Database.Update
 import java.util.*
 
 class DoctorModule {
-    private var sc = Scanner(System.`in`)
+     var sc = Scanner(System.`in`)
 
-    fun getdoctorDetails() {
+    fun getdoctorDetails(): Int {
         println("Enter your details about the day")
         println("Doctor enter your ID : ")
         var doc_id = sc.nextInt()
@@ -34,5 +34,8 @@ class DoctorModule {
 
         var connectivity = Update()
         connectivity.updateDoctorDetails(doc_id, hours, total_slots)
+
+        return total_slots
     }
+
 }

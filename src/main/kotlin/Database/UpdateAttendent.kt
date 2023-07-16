@@ -20,12 +20,22 @@ class UpdateAttendent {
             ex.printStackTrace()
         }
     }
-    fun isDoctorAvailable(body_part: String) {
-
+    fun isSlotAvailable(body_part: String, total_slots: Int): Boolean {
+        val statement = con?.prepareStatement("SELECT COUNT(*) AS count FROM appointments WHERE body_part = ?")
+        statement?.setString(1, body_part)
+        val resultSet = statement?.executeQuery()
+        var count = 0
+        if (resultSet?.next() == true) {
+            count = resultSet.getInt("count")
+        }
+        statement?.close()
+        resultSet?.close()
+        return count < total_slots
     }
     fun getpatientDetails(body_part: String, avail_slots: Int ) {
-        // Prepare the SQL statement to insert the data into the Doctors table
-        val statement = con?.prepareStatement("UPDATE doctor SET avail_slots = ? WHERE body_part = ?")
+
+        // Prepare the SQL statement to update the data into the Doctors table
+        val statement = con?.prepareStatement("UPDATE doctor SET avail_slots = ? WHERE body_part = '?'")
 
         // Set the values for the prepared statement
         statement?.setInt(1, avail_slots)
