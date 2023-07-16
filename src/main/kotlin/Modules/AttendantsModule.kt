@@ -1,32 +1,32 @@
 package Modules
 
 import java.util.*
-
+import Database.UpdateAttendent
 class AttendantsModule {
-    fun attendant() {
-        var sc = Scanner(System.`in`)
+    private var sc = Scanner(System.`in`)
 
+    fun getpatientDetails() {
         println("Enter the patient's name: ")
         var patientName = sc.nextLine()
 
         println("Enter which body part to be examined: ")
         var part = sc.nextLine()
 
-        var bodypart: String? = null
+        var body_part: String? = null
 
-        if (bodypart == "skin"){
+        if (body_part == "skin"){
             println("Your appointment is fixed with Dr. John (Dermatologist)")
         }
-        if (bodypart == "lungs"){
+        if (body_part == "lungs"){
             println("Your appointment is fixed with Dr. Sharpe (Oncologist)")
         }
-        if (bodypart == "heart"){
+        if (body_part == "heart"){
             println("Your appointment is fixed with Dr. Dhruv (Cardiologist)")
         }
-        if (bodypart == "ENT"){
+        if (body_part == "ENT"){
             println("Your appointment is fixed with Dr. Divya (Dermatologist)")
         }
-        if (bodypart == "X-ray"){
+        if (body_part == "X-ray"){
             println("Your appointment is fixed with Dr. Shilpa (Radiologist)")
         }
 

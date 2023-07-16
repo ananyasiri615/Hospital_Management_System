@@ -25,9 +25,12 @@ class AdminModule {
         print("Enter Doctor Department: ")
         var department = scanner.nextLine()
 
+        print("Enter body part: ")
+        var body_part = scanner.nextLine()
+
         print("Doctor details Added successfully")
 
         val connectivity = Insert()
-        connectivity.insertDoctorDetails(doc_id, doc_name, age, gender, department)
+        connectivity.insertDoctorDetails(doc_id, doc_name, age, gender, department, body_part)
     }
 }

@@ -2,7 +2,7 @@ package Database
 
 import java.sql.*
 
-class Insert {
+class UpdateAttendent {
     private var con: Connection? = null
     private val username = "root"
     private val password = "ananya10"
@@ -20,21 +20,19 @@ class Insert {
             ex.printStackTrace()
         }
     }
+    fun isDoctorAvailable(body_part: String) {
 
-    fun insertDoctorDetails(doc_id: Int, doc_name: String, age: Int, gender: String, department: String, body_part: String) {
+    }
+    fun getpatientDetails(body_part: String, avail_slots: Int ) {
         // Prepare the SQL statement to insert the data into the Doctors table
-        val statement = con?.prepareStatement("INSERT INTO doctor(doc_id, doc_name, age, gender, department, body_part) VALUES (?, ?, ?, ?, ?, ?)")
+        val statement = con?.prepareStatement("UPDATE doctor SET avail_slots = ? WHERE body_part = ?")
 
         // Set the values for the prepared statement
-        statement?.setInt(1, doc_id)
-        statement?.setString(2, doc_name)
-        statement?.setInt(3, age)
-        statement?.setString(4, gender)
-        statement?.setString(5, department)
-        statement?.setString(6, body_part)
+        statement?.setInt(1, avail_slots)
+        statement?.setString(2, body_part)
 
 
-        // Execute the insert statement
+        // Execute the update statement
         statement?.executeUpdate()
 
         // Close the database connection and resources

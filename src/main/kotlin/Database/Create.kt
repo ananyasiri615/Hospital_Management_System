@@ -21,12 +21,12 @@ object Create {
             stmt = con!!.createStatement()
 
             // Create table
-            var query: String = "create table doctor(doc_id int, doc_name varchar(100),age int,gender varchar(100),department varchar(100),hours int,total_slots int, avail_slots int)"
+            var query: String = "create table doctor(doc_id int, doc_name varchar(100),age int,gender varchar(100),department varchar(100),body_part varchar(100), hours int,total_slots int, avail_slots int)"
            // var queryy: String = "insert into menu(id,item,quality) values (1,'Maggie', 'Good') "
 
             val rows = stmt!!.executeUpdate(query)
             //val rows1 = stmt!!.executeUpdate(queryy)
-            println("Table created Successfully & values inserted ")
+            println("Table created Successfully ")
         }catch (ex: Exception){
             ex.printStackTrace()
         }

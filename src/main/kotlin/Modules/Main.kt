@@ -7,6 +7,7 @@ data class doctor(
     var age: Int,
     var gender: String,
     var department: String,
+    var body_part:String,
     var hours: Double,
     var total_slots: Int,
     var avail_slots: Int
@@ -41,7 +42,7 @@ fun confirmDes() {
         3 -> {
             println("Hello, attendant!")
             var attendantvar = AttendantsModule()
-            attendantvar.attendant()
+            attendantvar.getpatientDetails()
         }
         else -> println("Invalid designation")
     }
