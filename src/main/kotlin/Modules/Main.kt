@@ -42,7 +42,7 @@ fun confirmDes() {
         3 -> {
             println("Hello, attendant!")
             var attendantvar = AttendantsModule()
-            attendantvar.getpatientDetails()
+            attendantvar.getPatientDetails()
         }
         else -> println("Invalid designation")
     }

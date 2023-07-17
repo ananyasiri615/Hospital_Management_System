@@ -1,28 +1,30 @@
 package Modules
 
-import java.util.*
 import Database.UpdateAttendent
-import Modules.*
-
+import java.util.*
 
 class AttendantsModule {
-    var sc = Scanner(System.`in`)
+    private val sc = Scanner(System.`in`)
 
-    fun getpatientDetails() {
+    fun getPatientDetails() {
         println("Enter the patient's name: ")
-        var patientName = sc.nextLine()
+        val patientName = sc.nextLine()
 
         println("Enter which body part to be examined: ")
         val body_part = sc.nextLine()
 
-
-        val total_slots= DoctorModule().getDoctorDetails()
+        val doctorModule = DoctorModule()
+        val total_slots = doctorModule.getdoctorDetails()
 
         val connectivity = UpdateAttendent()
-        if (connectivity.isSlotAvailable(body_part, total_slots)) {
-            println("Your appointment is fixed with the appropriate doctor.")
-        } else {
-            println("Failed to book the appointment. Please try again.")
+        if (total_slots > 0) {
+            if (connectivity.isSlotAvailable(body_part, total_slots)) {
+                    println("Your appointment is fixed with the appropriate doctor.")
+            }
+            else {
+                println("No slots available for the selected body part. Please come tomorrow.")
+            }
         }
+        connectivity.getpatientDetails(body_part, avail_slots)
     }
 }

@@ -1,7 +1,7 @@
 package Database
 
 import java.sql.*
-
+import Modules.DoctorModule
 class UpdateAttendent {
     private var con: Connection? = null
     private val username = "root"
@@ -20,8 +20,9 @@ class UpdateAttendent {
             ex.printStackTrace()
         }
     }
-    fun isSlotAvailable(body_part: String, total_slots: Int): Boolean {
-        val statement = con?.prepareStatement("SELECT COUNT(*) AS count FROM appointments WHERE body_part = ?")
+    fun isSlotAvailable(body_part: String: String, total_slots: Int): Boolean {
+        val statement = con?.prepareStatement("SELECT COUNT(*) AS count FROM doctor WHERE body_part = ?")
+        //select avail_slots from doctor where body_part = skin
         statement?.setString(1, body_part)
         val resultSet = statement?.executeQuery()
         var count = 0
@@ -30,6 +31,7 @@ class UpdateAttendent {
         }
         statement?.close()
         resultSet?.close()
+        println(total_slots)
         return count < total_slots
     }
     fun getpatientDetails(body_part: String, avail_slots: Int ) {
